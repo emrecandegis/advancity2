@@ -1,7 +1,56 @@
 
 import React, {Component} from 'react';
-import {TouchableOpacity,StyleSheet, View, Text} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, Text, FlatList} from 'react-native';
+import {List,ListItem} from "react-native-elements";
+
 import Icon from 'react-native-vector-icons/Ionicons';
+import {CustomIcon} from "./subScreens/CustomIcon";
+
+
+const icerik = [
+
+    {
+        key  : "LMS Nedir ? ",
+        type : 1,
+        statu: true
+    },
+    {
+        key  : "quiz 1 ",
+        type : 2,
+        statu: false
+    },
+    {
+        key  : "quiz 2 ",
+        type : 2,
+        statu: false
+    },
+    {
+        key  : "quiz 3 ",
+        type : 2,
+        statu: false
+    },
+    {
+        key  : "quiz 4 ",
+        type : 2,
+        statu: false
+    },
+    {
+        key  : "quiz 5 ",
+        type : 2,
+        statu: true
+    },
+    {
+        key  : "Eğitimler için LMS farkındalık sunumu",
+        type : 3,
+        statu: false
+    },
+    {
+        key  : "LMS'e giriş",
+        type : 4,
+        statu: true
+    },
+
+];
 
 export class LectureDetailScreen extends Component{
 
@@ -38,9 +87,31 @@ export class LectureDetailScreen extends Component{
                               size={50} />
                     </TouchableOpacity>
                 </View>
-                <View style={{width:'100%',backgroundColor:'red'}}>
-                    <Text>Tümü 11 Aktivite</Text>
+                <View style={styles.activitesBar}>
+                    <View style={{flex:7}}>
+                        <Text style={[styles.activitesText,{textAlign: 'left'} ]}>Tümü</Text>
+                    </View>
+                    <View style={{flex:3}}>
+                        <Text style={[styles.activitesText,{textAlign: 'right'} ]}>11 Aktivite</Text>
+                    </View>
                 </View>
+                <View>
+                    <FlatList
+                        data={ icerik }
+                        ItemSeparatorComponent = {this.FlatListItemSeparator}
+                        renderItem={({item}) =>
+                            <ListItem
+                                rightIcon={<CustomIcon type={item.type}/>}
+                                leftIcon={item.statu ? <Icon name = "ios-checkmark-circle-outline" /> : <Icon name = "ios-remove" />}
+                                title={item.key}
+                                rightElement={<Icon name = "ios-arrow-forward" />}
+                            >
+                            </ListItem>
+                        }
+                    />
+                </View>
+
+
             </View>
         );
     }
@@ -67,5 +138,27 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         marginLeft : 1,
         marginRight : 1,
-    }
+    },
+    activitesBar:{
+        width : '100%',
+        backgroundColor : '#4cd1ff',
+        height : 50,
+        justifyContent : 'center',
+        alignItems : 'center',
+        flexDirection : 'row',
+        paddingLeft:10,
+        paddingRight : 10
+    },
+    activitesText:{
+        color : 'white',
+        fontSize : 20,
+    },
+    row:{
+        flex:1,
+        height: 120,
+        width: '100%',
+        backgroundColor: '#e5e5e5',
+        marginBottom:2,
+        justifyContent:'center'
+    },
 });

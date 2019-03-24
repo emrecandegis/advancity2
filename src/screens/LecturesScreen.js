@@ -1,8 +1,9 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, FlatList,TouchableHighlight} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import {Header} from "./subScreens/Header";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {ListItem} from "react-native-elements";
 
 const dersler = [
 
@@ -46,23 +47,12 @@ export class LecturesScreen extends Component{
                         data={ dersler }
                         ItemSeparatorComponent = {this.FlatListItemSeparator}
                         renderItem={({item}) =>
-                            <TouchableHighlight style={styles.row} onPress={()=>{this.props.navigation.navigate("LectureDetail",{lectureName:item.key})}} >
-                                <View style={styles.column}>
-                                    <View style={styles.columnLeft}>
-                                        <Icon name="book"
-                                              color="black"
-                                              size={50} />
-                                    </View>
-                                    <View style={styles.columnMiddle}>
-                                        <Text style={styles.headerText}>{item.key}</Text>
-                                    </View>
-                                    <View style={styles.columnRight}>
-                                        <Icon name="angle-right"
-                                              color="gray"
-                                              size={50} />
-                                    </View>
-                                </View>
-                            </TouchableHighlight>
+                            <ListItem
+                                title={item.key}
+                                rightIcon={<Icon name = "angle-right" />}
+                                leftIcon={<Icon size={40} name = "book" />}
+                                onPress={()=>{this.props.navigation.navigate("LectureDetail",{lectureName:item.key})}} >
+                            </ListItem>
                         }
                     />
                 </View>
