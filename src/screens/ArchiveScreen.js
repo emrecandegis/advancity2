@@ -1,12 +1,16 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Header} from "./subScreens/Header";
 
 export class ArchiveScreen extends Component{
+    static navigationOptions = {
+        title: 'Arşiv',
+    };
     render() {
         return (
             <View style={styles.container}>
-                <Text>ArchiveScreenScreen </Text>
+                <Header title={"Arşiv"}/>
             </View>
         );
     }
@@ -15,7 +19,6 @@ export class ArchiveScreen extends Component{
 const styles = StyleSheet.create({
     container:{
         flex : 1,
-        alignItems : "center",
-        justifyContent : "center"
+        flexDirection: 'column',
     }
 });

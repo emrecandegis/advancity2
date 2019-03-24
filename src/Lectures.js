@@ -6,12 +6,17 @@ import {LectureDetailScreen} from "./screens/LectureDetailScreen";
 import {LecturesScreen} from "./screens/LecturesScreen";
 
 export class Lectures extends Component{
+    static navigationOptions = {
+        header: null,
+        tabBarLabel: 'Dersler'
+    };
     render() {
         return (
             <AppContainer/>
         );
     }
 }
+
 
 
 const StackNavigator = createStackNavigator({

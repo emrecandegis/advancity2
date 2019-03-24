@@ -1,12 +1,16 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Header} from "./subScreens/Header";
 
 export class ContactScreen extends Component{
+    static navigationOptions = {
+        title: 'İletişim',
+    };
     render() {
         return (
             <View style={styles.container}>
-                <Text>ContactScreen</Text>
+                <Header title={"İletişim"}/>
             </View>
         );
     }
@@ -15,7 +19,6 @@ export class ContactScreen extends Component{
 const styles = StyleSheet.create({
     container:{
         flex : 1,
-        alignItems : "center",
-        justifyContent : "center"
+        flexDirection: 'column',
     }
 });

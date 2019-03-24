@@ -1,13 +1,17 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View,Button} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export class LectureDetailScreen extends Component{
+
+    static navigationOptions =({ navigation }) => ({
+        title: navigation.getParam("lectureName","Unnamed")
+    });
+
     render() {
         return (
             <View style={styles.container}>
-                <Text>Lectures Detail Screen</Text>
-                <Button title={"geri"} onPress={()=>{this.props.navigation.goBack()}}/>
+
             </View>
         );
     }
@@ -16,7 +20,6 @@ export class LectureDetailScreen extends Component{
 const styles = StyleSheet.create({
     container:{
         flex : 1,
-        alignItems : "center",
-        justifyContent : "center"
+        flexDirection: 'column',
     }
 });
